@@ -11,10 +11,10 @@ action = ''
 
 while action != 'e' and action != 'exit':
 	
-	# if os.name == "nt":
-	# 	os.system("cls")
-	# else:
-	# 	os.system("clear")
+	if os.name == "nt":
+		os.system("cls")
+	else:
+		os.system("clear")
 
 	menu = f'''--- POKÉMON PER DAY ---
 {player.get_pks_from_total()}/251 Pokémons
