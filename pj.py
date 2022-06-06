@@ -27,12 +27,15 @@ class PJ():
 		return len(self._pks_catched)
 
 	def set_new_pokemon(self, response):
-		if response['id'] in self._pks_catched:
-			self._pks_catched[response['id']] += 1
-		else:
-			self._pks_catched[response['id']] = 1
+		# The new pokemon has an integer as id
+		str_id = str(response['id'])
 
-	def exit(self):
+		if response['id'] in self._pks_catched:
+			self._pks_catched[str_id] += 1
+		else:
+			self._pks_catched[str_id] = 1
+
+	def save(self):
 		data_dictionary = {'lastDay':str(self._last_day), 'pksCatched':self._pks_catched}
 
 		data_json = json.dumps(data_dictionary)

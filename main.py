@@ -31,14 +31,18 @@ Chose an option:
 		response = to_catch.try_catch(player.ask_can_catch(str(date.today())))
 		if response:
 			player.set_new_pokemon(response)
+			player.save()
 		input('... Press Enter ...')
 
 	elif action == 'l' or action == 'list':
-		list_it.to_list(player.get_pks_catched())
+		try:
+			list_it.to_list(player.get_pks_catched())
+		except:
+			print('Connection error, try later...')
 		input('... Press Enter ...')
 	
 	elif action == 'e' or action == 'exit':
-		player.exit()
+		player.save()
 
 	else:
 		print('Command '+ action +' doesn\'t exist')
